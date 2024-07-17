@@ -26,13 +26,16 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
         }
         button:hover {
             background-color: #218838;
@@ -44,19 +47,24 @@
         <h1>YouTube Downloader</h1>
         <input type="text" id="url" placeholder="Enter YouTube video URL">
         <br>
+        <select id="format">
+            <option value="mp3">MP3</option>
+            <option value="mp4">MP4</option>
+        </select>
+        <br>
         <button onclick="downloadVideo()">Download</button>
     </div>
 
     <script>
         function downloadVideo() {
             const url = document.getElementById('url').value;
-            if (url) {
-                window.location.href = `/api/download?url=${encodeURIComponent(url)}`;
+            const format = document.getElementById('format').value;
+            if (url && format) {
+                window.location.href = `/api/download?url=${encodeURIComponent(url)}&format=${encodeURIComponent(format)}`;
             } else {
-                alert('Please enter a YouTube video URL');
+                alert('Please enter a YouTube video URL and select a format');
             }
         }
     </script>
-    
 </body>
 </html>
