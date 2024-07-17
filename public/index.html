@@ -51,11 +51,12 @@
         function downloadVideo() {
             const url = document.getElementById('url').value;
             if (url) {
-                window.location.href = `/download?url=${encodeURIComponent(url)}`;
+                window.location.href = `/api/download?url=${encodeURIComponent(url)}`;
             } else {
                 alert('Please enter a YouTube video URL');
             }
         }
     </script>
+    
 </body>
 </html>
